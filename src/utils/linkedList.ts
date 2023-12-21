@@ -62,9 +62,6 @@ export class LinkedList<T> {
   }
 
   toArray() {
-    return Array.from(
-      { length: this.length },
-      (_, index) => this.get(index)?.value,
-    )
+    return Array.from({ length: this.length }, (_, index) => this.get(index)?.value)
   }
 }

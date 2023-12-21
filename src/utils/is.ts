@@ -34,8 +34,7 @@ export const isSet = <T = any>() => _is<Set<T>>('[object Set]')
 
 export const isMap = <T = any, K = any>() => _is<Map<T, K>>('[object Map]')
 
-export const isNil = (data: unknown): data is null | undefined =>
-  isNull(data) || isUndefined(data)
+export const isNil = (data: unknown): data is null | undefined => isNull(data) || isUndefined(data)
 
 export const isEmpty = (data: unknown): boolean => {
   if (data == null) return true
@@ -62,9 +61,7 @@ export const isEmpty = (data: unknown): boolean => {
 
 export const isNotEmpty = (data: unknown) => !isEmpty(data)
 
-export const generateIsBlanks = (
-  getItem: (item: any, index: number) => any,
-) => {
+export const generateIsBlanks = (getItem: (item: any, index: number) => any) => {
   return (...args: any[]): boolean => {
     for (let i = 0; i < args.length; i++) {
       if (isEmpty(getItem(args[i], i))) return true
@@ -73,9 +70,7 @@ export const generateIsBlanks = (
   }
 }
 
-export const generateIsAllBlanks = (
-  getItem: (item: any, index: number) => any,
-) => {
+export const generateIsAllBlanks = (getItem: (item: any, index: number) => any) => {
   return (...args: any[]): boolean => {
     for (let i = 0; i < args.length; i++) {
       if (isNotEmpty(getItem(args[i], i))) return false
@@ -94,11 +89,9 @@ export const isBlanks = generateIsBlanks((item) => item)
  */
 export const isAllBlanks = generateIsAllBlanks((item) => item)
 
-export const isWX = () =>
-  window.navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1
+export const isWX = () => window.navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1
 
-export const isIOS = () =>
-  /(iPhone|iPad|iPod|iOS)/i.test(window.navigator.userAgent)
+export const isIOS = () => /(iPhone|iPad|iPod|iOS)/i.test(window.navigator.userAgent)
 
 export const isAndroid = () => /Android/i.test(window.navigator.userAgent)
 
