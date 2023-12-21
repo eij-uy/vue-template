@@ -16,13 +16,20 @@ export default defineConfig(({ command, mode }) => {
         '@': resolve(root, 'src'),
       },
     },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@import "@/styles/index.scss";`,
+        },
+      },
+    },
     server: {
       port: 5173,
       proxy: {
         '/api': {
           target: VITE_ENV.VITE_APP_BASE_API,
           changeOrigin: true,
-          rewrite: path => path.replace(/^\/api/, ''),
+          rewrite: (path) => path.replace(/^\/api/, ''),
         },
       },
     },
